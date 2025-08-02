@@ -16,10 +16,13 @@ const BACKGROUND_OPACITY = "rgba(255, 255, 255, 0.98)";
 
 const respostaFinal = (
   <p style={{ fontSize: "clamp(1.1rem, 4vw, 1.3rem)", fontWeight: "600", color: "#333" }}>
-    <span style={{ color: PRIMARY, fontWeight: "900", fontSize: "clamp(1.8rem, 5.5vw, 2.2rem)" }}>
+    <img src='' alt='foto do redbull zero'></img>
+    <div style={{ color: PRIMARY, fontWeight: "900", fontSize: "clamp(1.8rem, 5.5vw, 2.2rem)" }}>
       RED BULL ZERO
-    </span>
-    — ZERO AÇÚCARES, <strong>100% AAASAS</strong>
+    </div>
+    <div>
+      ZERO AÇÚCARES, <strong>100% AAASAS</strong>
+    </div>
   </p>
 );
 
