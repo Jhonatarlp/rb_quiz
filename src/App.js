@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import CanImg from "./icons/redbull.png";
 
 const perguntas = [
   { 
@@ -66,7 +65,7 @@ const respostaFinal = (
       REDBULL ZERO
     </h1>
     <p style={{ fontSize: "clamp(1.1rem, 4vw, 1.3rem)", fontWeight: "600", color: "#333", margin: 0 }}>
-      ZERO AÇÚCARES, <strong>100% ENERGIA</strong>
+      ZERO AÇÚCARES, <strong>100% ASAS</strong>
     </p>
   </div>
 );
@@ -171,7 +170,7 @@ export default function RedBullQuiz() {
             }}
           >
             <img
-              src={CanImg}
+              src="/redbull.png"
               alt="Lata RedBull"
               style={{
                 width: isMobile ? "110px" : "160px",
