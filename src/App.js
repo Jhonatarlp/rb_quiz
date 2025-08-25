@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import CanImg from "./icons/RED BULL_ED_MOLHADO_LATA_IR_ABERTA_ILUSTRADA (1).png";
 
 const perguntas = [
   { 
@@ -56,9 +57,8 @@ const perguntas = [
 ];
 
 const PRIMARY = "#d6001c"; 
-const PRIMARY_DARK = "#a00014";
 const TEXT_COLOR = "#1c1c1c";
-const Bluee = "#000B8D" 
+const Bluee = "#004C6CFF" 
 
 const respostaFinal = (
   <div style={{ textAlign: "center" }}>
@@ -158,52 +158,53 @@ export default function RedBullQuiz() {
           userSelect: "none",
         }}
       >
-      {step === "inicio" && (
-        <>
-          <h1 style={{ fontSize: "4rem", fontWeight: "700", margin: "0.5rem 0" }}>
-            Qual <span style={{ color: PRIMARY }}>RedBull</span>
-          </h1>
-          <h2 style={{ fontSize: "3rem", fontWeight: "600", margin: "0 0 1.5rem 0" }}>
-            combina contigo <span style={{ color: Bluee }}>hoje?</span>
-          </h2>
-        <button
-          onClick={iniciar}
-          style={{
-            ...btnStyle(isMobile),                
-            padding: isMobile ? "1.2rem 2.4rem" : "1rem 1.75rem", 
-            fontSize: isMobile ? "1rem" : "1.3rem"            
-          }}
-          type="button"
-        >
-          Iniciar
-        </button>
-        </>
-      )}
 
+        {/* TELA INICIAL */}
+        {step === "inicio" && (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: isMobile ? "1.5rem" : "3rem",
+            }}
+          >
+            <img
+              src={CanImg}
+              alt="Lata RedBull"
+              style={{
+                width: isMobile ? "110px" : "160px",
+                transform: isMobile ? "rotate(-8deg)" : "rotate(-12deg)",
+                filter: "drop-shadow(0px 6px 12px rgba(0,0,0,0.25))",
+                objectFit: "contain",
+                flexShrink: 0,
+              }}
+            />
 
+            <div style={{ textAlign: isMobile ? "center" : "left", maxWidth: "22rem" }}>
+              <h1 style={{ fontSize: isMobile ? "2.2rem" : "3.2rem", fontWeight: "700", margin: "0.3rem 0", color: TEXT_COLOR }}>
+                Qual <span style={{ color: PRIMARY }}>RedBull</span>
+              </h1>
+              <h2 style={{ fontSize: isMobile ? "1.6rem" : "2.2rem", fontWeight: "600", margin: "0 0 1.2rem 0" }}>
+                combina contigo <span style={{ color: Bluee }}>hoje?</span>
+              </h2>
+
+              <button onClick={iniciar} className="cta-only-arrow" type="button" aria-label="Iniciar">
+                &gt;
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* QUIZ */}
         {step === "quiz" && (
           <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", width: "100%" }}>
-            <h2
-              style={{
-                fontSize: isMobile ? "1.1rem" : "1.4rem",
-                color: "#333",
-                fontWeight: "600",
-                margin: 0,
-              }}
-            >
+            <h2 style={{ fontSize: isMobile ? "1.1rem" : "1.4rem", color: "#333", fontWeight: "600", margin: 0 }}>
               {perguntas[indice].pergunta}
             </h2>
 
-            <ul
-              style={{
-                listStyle: "none",
-                padding: 0,
-                margin: 0,
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-              }}
-            >
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "1rem" }}>
               {perguntas[indice].opcoes.map((opcao, i) => (
                 <li key={i}>
                   <label
@@ -239,14 +240,9 @@ export default function RedBullQuiz() {
           </div>
         )}
 
+        {/* LOADING */}
         {showLoading && (
-          <div
-            style={{
-              opacity: fadeOutLoading ? 0 : 1,
-              transition: "opacity 0.3s ease",
-              marginTop: "2rem",
-            }}
-          >
+          <div style={{ opacity: fadeOutLoading ? 0 : 1, transition: "opacity 0.3s ease", marginTop: "2rem" }}>
             <h2 style={{ fontSize: "1.5rem", fontWeight: "700", color: PRIMARY }}>
               Estamos vendo o melhor RedBull para você
               <span className="dot">.</span>
@@ -256,21 +252,58 @@ export default function RedBullQuiz() {
           </div>
         )}
 
+        {/* RESULTADO */}
         {step === "resultado" && (
-          <div
-            style={{
-              opacity: fadeInResultado ? 1 : 0,
-              transition: "opacity 0.3s ease",
-              marginTop: "1rem",
-            }}
-          >
+          <div style={{ opacity: fadeInResultado ? 1 : 0, transition: "opacity 0.3s ease", marginTop: "1rem" }}>
             {respostaFinal}
           </div>
         )}
       </div>
 
+      {/* ESTILOS */}
       <style>
         {`
+          .cta-only-arrow{
+            --cta-bg:#d6001c;
+            --cta-bg-hover:#a00014;
+            background: var(--cta-bg);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            height: 56px;
+            width: 56px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1;
+            box-shadow:
+              0 10px 18px rgba(214,0,28,0.25),
+              inset 0 -3px 0 rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: background-color .25s ease, transform .15s ease, box-shadow .25s ease;
+          }
+          .cta-only-arrow:hover{
+            background: var(--cta-bg-hover);
+            transform: scale(1.07);
+            box-shadow:
+              0 12px 22px rgba(214,0,28,0.3),
+              inset 0 -3px 0 rgba(0,0,0,0.25);
+          }
+          .cta-only-arrow:active{
+            transform: scale(0.96);
+            box-shadow:
+              0 6px 12px rgba(214,0,28,0.22),
+              inset 0 0 0 rgba(0,0,0,0);
+          }
+          @media (max-width:430px){
+            .cta-only-arrow{
+              height: 48px;
+              width: 48px;
+              font-size: 1.6rem;
+            }
+          }
           .dot {
             animation: jump 1.5s infinite;
             display: inline-block;
