@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CanImg from "./icons/RED BULL_ED_MOLHADO_LATA_IR_ABERTA_ILUSTRADA (1).png";
+import CanImg from "./icons/redbull.png";
 
 const perguntas = [
   { 
