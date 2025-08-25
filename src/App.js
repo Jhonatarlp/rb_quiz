@@ -57,18 +57,7 @@ const perguntas = [
 
 const PRIMARY = "#d6001c"; 
 const TEXT_COLOR = "#1c1c1c";
-const Bluee = "#004C6CFF" 
-
-const respostaFinal = (
-  <div style={{ textAlign: "center" }}>
-    <h1 style={{ color: PRIMARY, fontWeight: "900", fontSize: "clamp(1.8rem, 5vw, 2.2rem)", marginBottom: "0.5rem" }}>
-      REDBULL ZERO
-    </h1>
-    <p style={{ fontSize: "clamp(1.1rem, 4vw, 1.3rem)", fontWeight: "600", color: "#333", margin: 0 }}>
-      ZERO AÇÚCARES, <strong>100% ASAS</strong>
-    </p>
-  </div>
-);
+const Bluee = "#004C6CFF"; 
 
 export default function RedBullQuiz() {
   const [step, setStep] = useState("inicio");
@@ -208,6 +197,7 @@ export default function RedBullQuiz() {
                 <li key={i}>
                   <label
                     style={{
+                      fontFamily: 'RedBullFont2',
                       display: "flex",
                       alignItems: "center",
                       gap: "0.8rem",
@@ -216,7 +206,7 @@ export default function RedBullQuiz() {
                       borderRadius: "0.75rem",
                       fontWeight: "500",
                       cursor: "pointer",
-                      fontSize: isMobile ? "1rem" : "1.1rem",
+                      fontSize: isMobile ? "1rem" : "1.3rem",
                       backgroundColor: respostas[indice] === i ? "#fff6f6" : "transparent",
                       transition: "all 0.3s ease",
                     }}
@@ -253,8 +243,49 @@ export default function RedBullQuiz() {
 
         {/* RESULTADO */}
         {step === "resultado" && (
-          <div style={{ opacity: fadeInResultado ? 1 : 0, transition: "opacity 0.3s ease", marginTop: "1rem" }}>
-            {respostaFinal}
+          <div
+            style={{
+              opacity: fadeInResultado ? 1 : 0,
+              transition: "opacity 0.3s ease",
+              marginTop: "1rem",
+              textAlign: "center",
+            }}
+          >
+            <h1
+              style={{
+                color: PRIMARY,
+                fontWeight: "900",
+                fontSize: "clamp(1.8rem, 5vw, 2.4rem)",
+                marginBottom: "0.8rem",
+              }}
+            >
+              RED BULL ZERO
+            </h1>
+
+            <img
+              src="/redbullzero.png"
+              alt="Red Bull Zero"
+              style={{
+                width: "100px",
+                margin: "1rem auto",
+                display: "block",
+                filter: "drop-shadow(0px 6px 12px rgba(0,0,0,0.2))",
+              }}
+            />
+
+            <p
+              style={{
+                fontSize: "clamp(1.1rem, 4vw, 1.3rem)",
+                fontWeight: "600",
+                color: "#333",
+                margin: 0,
+              }}
+            >
+              ZERO AÇÚCARES, <span style={{ color: Bluee }}>100% ASAS</span>
+            </p>
+              <p style={{ fontSize: "clamp(0.9rem, 3vw, 1.1rem)", color: "#555", marginTop: "0.5rem" }}>
+                A senha da caixa é <span style={{ fontWeight: "700", color: PRIMARY }}>???</span>
+              </p>
           </div>
         )}
       </div>

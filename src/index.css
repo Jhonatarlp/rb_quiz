@@ -9,10 +9,21 @@
 @font-face {
   font-family: 'RedBullFont2';
   src: url('/src/fonts/FuturaforRedBull-Book.ttf') format('truetype');
-  font-weight: 700;
+  font-weight: 900;
   font-style: normal;
   font-display: swap; 
+  font-size: 4rem;
 }
+
+@font-face {
+  font-family: 'RedBullFont3';
+  src: url('/src/fonts/FuturaforRedBull-CondBold.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap; 
+  font-size: 4rem;
+}
+
 body, html, #root {
   margin: 0;
   padding: 0;
