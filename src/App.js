@@ -172,7 +172,7 @@ export default function RedBullQuiz() {
 
             <div style={{ textAlign: isMobile ? "center" : "left", maxWidth: "22rem" }}>
               <h1 style={{ fontSize: isMobile ? "2.2rem" : "3.2rem", fontWeight: "700", margin: "0.3rem 0", color: TEXT_COLOR }}>
-                Qual <span style={{ color: PRIMARY }}>RedBull</span>
+                Qual <span style={{ color: PRIMARY }}>Red Bull</span>
               </h1>
               <h2 style={{ fontSize: isMobile ? "1.6rem" : "2.2rem", fontWeight: "600", margin: "0 0 1.2rem 0" }}>
                 combina contigo <span style={{ color: Bluee }}>hoje?</span>
@@ -233,7 +233,7 @@ export default function RedBullQuiz() {
         {showLoading && (
           <div style={{ opacity: fadeOutLoading ? 0 : 1, transition: "opacity 0.3s ease", marginTop: "2rem" }}>
             <h2 style={{ fontSize: "1.5rem", fontWeight: "700", color: PRIMARY }}>
-              Estamos vendo o melhor RedBull para você
+              Estamos vendo o melhor Red Bull para você
               <span className="dot">.</span>
               <span className="dot">.</span>
               <span className="dot">.</span>
