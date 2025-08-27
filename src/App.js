@@ -172,9 +172,10 @@ export default function RedBullQuiz() {
 
             <div style={{ textAlign: isMobile ? "center" : "left", maxWidth: "22rem" }}>
               <h1 style={{ fontSize: isMobile ? "2.2rem" : "3.2rem", fontWeight: "700", margin: "0.3rem 0", color: TEXT_COLOR }}>
-                Qual <span style={{ color: PRIMARY }}>Red Bull</span>
+                Qual <br/> 
+                <span style={{ color: PRIMARY }}>Red Bull</span>
               </h1>
-              <h2 style={{ fontSize: isMobile ? "1.6rem" : "2.2rem", fontWeight: "600", margin: "0 0 1.2rem 0" }}>
+              <h2 style={{ fontSize: isMobile ? "1.6rem" : "3rem", fontWeight: "600", margin: "0 0 1.2rem 0" }}>
                 combina contigo <span style={{ color: Bluee }}>hoje?</span>
               </h2>
 
@@ -281,10 +282,12 @@ export default function RedBullQuiz() {
                 margin: 0,
               }}
             >
-              ZERO AÇÚCARES, <span style={{ color: Bluee }}>100% ASAS</span>
+              ZERO AÇÚCAR, <span style={{ color: Bluee }}>100% AAASAS</span>
             </p>
-              <p style={{ fontSize: "clamp(0.9rem, 3vw, 1.1rem)", color: "#555", marginTop: "0.5rem" }}>
-                A senha da caixa é <span style={{ fontWeight: "700", color: PRIMARY }}>???</span>
+              <p style={{ fontSize: "clamp(0.5rem, 3vw, 1rem)", color: "#555", marginTop: "0.3rem"}}>
+                Red Bull Zero traz o mesmo sabor do tradicional, agora sem açúcar e sem calorias. Criado para dar aaasas a quem vive em movimento, acompanhando qualquer rotina — do treino ao trabalho, dos estudos aos momentos com amigos — com energia na medida certa e ainda menos calorias.              </p>
+              <p style={{ fontSize: "clamp(0.9rem, 3vw, 1.1rem)", color: "#333", marginTop: "0.7rem" }}>
+                A senha da caixa é: <span style={{ fontWeight: "700", color: PRIMARY }}>???</span>
               </p>
           </div>
         )}
