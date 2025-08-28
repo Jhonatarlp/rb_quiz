@@ -284,9 +284,9 @@ export default function RedBullQuiz() {
             >
               ZERO AÇÚCAR, <span style={{ color: Bluee }}>100% AAASAS</span>
             </p>
-              <p style={{ fontSize: "clamp(0.5rem, 3vw, 1rem)", color: "#555", marginTop: "0.3rem"}}>
-                Red Bull Zero traz o mesmo sabor do tradicional, agora sem açúcar e sem calorias. Criado para dar aaasas a quem vive em movimento, acompanhando qualquer rotina — do treino ao trabalho, dos estudos aos momentos com amigos — com energia na medida certa e ainda menos calorias.              </p>
-              <p style={{ fontSize: "clamp(0.9rem, 3vw, 1.1rem)", color: "#333", marginTop: "0.7rem" }}>
+              <p style={{ fontSize: "clamp(0.5rem, 3vw, 0.8rem)", color: "#555", marginTop: "0.5rem"}}>
+                Red Bull Zero traz o mesmo sabor do tradicional, agora sem açúcar! Criado para dar aaasas a quem vive em movimento, acompanhando qualquer rotina — do treino ao trabalho, dos estudos aos momentos com amigos — com energia na medida certa e ainda menos calorias.</p>
+              <p style={{ fontSize: "clamp(0.9rem, 3vw, 1.1rem)", color: "#333", marginTop: "0.5rem" }}>
                 A senha da caixa é: <span style={{ fontWeight: "700", color: PRIMARY }}>???</span>
               </p>
           </div>
