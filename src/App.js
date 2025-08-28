@@ -63,14 +63,24 @@ export default function RedBullQuiz() {
   const [step, setStep] = useState("inicio");
   const [indice, setIndice] = useState(0);
   const [respostas, setRespostas] = useState([]);
+  const [faculdade, setFaculdade] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [fadeInResultado, setFadeInResultado] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
   const [fadeOutLoading, setFadeOutLoading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const isMobile = windowWidth <= 430;
 
   const iniciar = () => {
+    setStep("faculdade");
+  };
+
+  const avancarFaculdade = () => {
+    if (!faculdade.trim()) {
+      setShowPopup(true);
+      return;
+    }
     setStep("quiz");
     setIndice(0);
     setRespostas([]);
@@ -84,7 +94,7 @@ export default function RedBullQuiz() {
 
   const avancar = () => {
     if (respostas[indice] === undefined) {
-      alert("Escolha uma opção para continuar!");
+      setShowPopup(true);
       return;
     }
     if (indice + 1 < perguntas.length) {
@@ -144,8 +154,49 @@ export default function RedBullQuiz() {
           textAlign: "center",
           fontSize: "clamp(1rem, 3vw, 2rem)",
           userSelect: "none",
+          position: "relative"
         }}
       >
+
+        {/* POPUP */}
+        {showPopup && (
+          <div style={{
+            position: "absolute",
+            top: 0, left: 0, right: 0, bottom: 0,
+            background: "rgba(0,0,0,0.4)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: "1rem"
+          }}>
+            <div style={{
+              background: "#fff",
+              padding: "1.5rem",
+              borderRadius: "0.8rem",
+              maxWidth: "300px",
+              textAlign: "center",
+              boxShadow: "0 6px 16px rgba(0,0,0,0.3)"
+            }}>
+              <p style={{ fontSize: "1.1rem", marginBottom: "1rem" }}>
+                ⚠️ Escolha uma opção ou preencha o campo antes de continuar!
+              </p>
+              <button 
+                onClick={() => setShowPopup(false)} 
+                style={{
+                  backgroundColor: PRIMARY,
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "0.5rem",
+                  padding: "0.6rem 1.2rem",
+                  cursor: "pointer",
+                  fontWeight: "700"
+                }}
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* TELA INICIAL */}
         {step === "inicio" && (
@@ -183,6 +234,31 @@ export default function RedBullQuiz() {
                 &gt;
               </button>
             </div>
+          </div>
+        )}
+
+        {/* TELA FACULDADE */}
+        {step === "faculdade" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
+            <h2 style={{ fontSize: "1.4rem", fontWeight: "600", color: "#333" }}>
+              Qual sua faculdade?
+            </h2>
+            <input 
+              type="text"
+              value={faculdade}
+              onChange={(e) => setFaculdade(e.target.value)}
+              placeholder="Digite aqui..."
+              style={{
+                padding: "0.8rem 1rem",
+                borderRadius: "0.6rem",
+                border: "1px solid #ccc",
+                fontSize: "1rem",
+                outline: "none"
+              }}
+            />
+            <button onClick={avancarFaculdade} style={btnStyle(isMobile)} type="button">
+              Avançar
+            </button>
           </div>
         )}
 
@@ -285,7 +361,8 @@ export default function RedBullQuiz() {
               ZERO AÇÚCAR, <span style={{ color: Bluee }}>100% AAASAS</span>
             </p>
               <p style={{ fontSize: "clamp(0.5rem, 3vw, 0.8rem)", color: "#555", marginTop: "0.5rem"}}>
-                Red Bull Zero traz o mesmo sabor do tradicional, agora sem açúcar! Criado para dar aaasas a quem vive em movimento, acompanhando qualquer rotina — do treino ao trabalho, dos estudos aos momentos com amigos — com energia na medida certa e ainda menos calorias.</p>
+                Red Bull Zero traz o mesmo sabor do tradicional, agora sem açúcar! Criado para dar aaasas a quem vive em movimento, acompanhando qualquer rotina — do treino ao trabalho, dos estudos aos momentos com amigos — com energia na medida certa e ainda menos calorias.
+              </p>
               <p style={{ fontSize: "clamp(0.9rem, 3vw, 1.1rem)", color: "#333", marginTop: "0.5rem" }}>
                 A senha da caixa é: <span style={{ fontWeight: "700", color: PRIMARY }}>???</span>
               </p>
