@@ -1,6 +1,20 @@
-import app from "./src/app.js";
+import express from "express";
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+const app = express();
+
+app.use(express.json());
+
+
+app.get("/", (req, res) => {
+  res.send("API Redbull Quiz está funcionando!");
 });
+
+app.get("/api/test", (req, res) => {
+  res.json({ status: "ok", message: "API respondendo corretamente!" });
+});
+
+app.use((req, res) => {
+  res.status(404).json({ error: "Rota não encontrada" });
+});
+
+export default app;
