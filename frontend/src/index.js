@@ -1,29 +1,17 @@
-// backend/index.js
-import express from "express";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-mongoose.connect(process.env.MONGO_URI);
-
-const RespostaSchema = new mongoose.Schema({
-  usuario: String,
-  respostas: Object,
-  timestamp: Date,
-});
-
-const Resposta = mongoose.model("Resposta", RespostaSchema);
-
-app.post("/api/respostas", async (req, res) => {
-  try {
-    const novaResposta = new Resposta(req.body);
-    await novaResposta.save();
-    res.json({ status: "ok" });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
