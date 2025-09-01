@@ -5,6 +5,8 @@ set -o errexit
 # Instala as dependências do backend
 npm install --prefix backend
 
-# Instala as dependências do frontend E executa o build
-npm install --prefix frontend
+# Instala TODAS as dependências do frontend (incluindo as de desenvolvimento)
+npm install --prefix frontend --production=false
+
+# Executa o build do frontend
 npm run build --prefix frontend
