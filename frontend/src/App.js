@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import redbullIMg from "../src/assets/redbull.png";
+import redbullzero from "../src/assets/redbullzero.png";
 
 const perguntas = [
   { 
@@ -230,7 +232,7 @@ export default function RedBullQuiz() {
             }}
           >
             <img
-              src="../src/assets/redbull.png"
+              src={redbullIMg}
               alt="Lata RedBull"
               style={{
                 width: isMobile ? "110px" : "160px",
@@ -361,7 +363,7 @@ export default function RedBullQuiz() {
             </h1>
 
             <img
-              src="./src/assets/redbullzero.png"
+              src={redbullzero}
               alt="Red Bull Zero"
               style={{
                 width: "100px",
