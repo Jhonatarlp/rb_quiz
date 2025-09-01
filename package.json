@@ -1,12 +1,15 @@
 {
-  "name": "quiz-backend",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "redbull_quiz",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
+    "build": "bash build.sh",
     "start": "node index.js"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "mongoose": "^7.6.0"
+    "express": "^4.19.2"
   }
 }

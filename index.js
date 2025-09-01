@@ -1,31 +1,28 @@
-// backend/index.js
-import express from "express";
-import cors from "cors";
-import mongoose from "mongoose";
+const express = require('express');
+const path = require('path');
 
 const app = express();
-app.use(cors());
-app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI);
+// Se você tiver API do backend, monte aqui, ex.:
+// const apiRouter = require('./backend'); // ajuste conforme seu código
+// app.use('/api', apiRouter);
 
-const RespostaSchema = new mongoose.Schema({
-  usuario: String,
-  respostas: Object,
-  timestamp: Date,
+// Servir arquivos estáticos do build do React
+const buildPath = path.join(__dirname, 'frontend', 'build');
+app.use(express.static(buildPath));
+
+// Rota de health-check (útil para Render)
+app.get('/healthz', (_req, res) => {
+  res.status(200).send('ok');
 });
 
-const Resposta = mongoose.model("Resposta", RespostaSchema);
-
-app.post("/api/respostas", async (req, res) => {
-  try {
-    const novaResposta = new Resposta(req.body);
-    await novaResposta.save();
-    res.json({ status: "ok" });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+// Para qualquer rota que não seja API/estático, devolve o index.html do React
+app.get('*', (_req, res) => {
+  res.sendFile(path.join(buildPath, 'index.html'));
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Porta do Render vem em process.env.PORT
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server listening on :${port}`);
+});
