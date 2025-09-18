@@ -175,7 +175,7 @@ export default function RedBullQuiz() {
             }}
           >
             <img
-              src="/redbull.png"
+              src="/redbull.webp"
               alt="Lata RedBull"
               style={{
                 width: isMobile ? "110px" : "160px",
@@ -305,7 +305,7 @@ export default function RedBullQuiz() {
             </h1>
 
             <img
-              src="/redbullzero.png"
+              src="/redbullzero.webp"
               alt="Red Bull Zero"
               style={{
                 width: "100px",
