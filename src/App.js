@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 
 const perguntas = [
   { 
+    id: 1,
     pergunta: "1. Qual seu gênero?", 
     opcoes: ["Masculino", "Feminino", "Prefiro não responder", "Outro"] 
   },
   { 
+    id: 2,
     pergunta: "2. Como você se sente hoje?", 
     opcoes: ["Cansado(a)", "Calmo(a)", "Motivado(a)", "Disposto(a)", "Animado(a)"] 
   },
   { 
+    id: 3,
     pergunta: "3. Qual momento do dia você mais sente que precisa de energia extra?", 
     opcoes: [
       "De manhã cedo, para começar as aulas",
@@ -21,6 +24,7 @@ const perguntas = [
     ] 
   },
   { 
+    id: 4,
     pergunta: "4. Em quais situações você mais consome algo para dar energia?", 
     opcoes: [
       "Antes das provas ou trabalhos importantes",
@@ -31,10 +35,12 @@ const perguntas = [
     ] 
   },
   { 
+    id: 5,
     pergunta: "5. Com que frequência você pratica atividades físicas?", 
     opcoes: ["Diariamente", "Algumas vezes por semana", "Raramente", "Nunca"] 
   },
   { 
+    id: 6,
     pergunta: "6. Você diria que se preocupa em equilibrar energia e saúde?", 
     opcoes: [
       "Sim, sempre busco opções mais saudáveis",
@@ -44,6 +50,7 @@ const perguntas = [
     ] 
   },
   { 
+    id: 7,
     pergunta: "7. Qual cenário mais combina com você agora?", 
     opcoes: [
       "Cheguei da aula e estou cansado(a)",
@@ -241,7 +248,7 @@ export default function RedBullQuiz() {
         {step === "faculdade" && (
           <div style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
             <h2 style={{ fontSize: "1.4rem", fontWeight: "600", color: "#333" }}>
-              Qual sua faculdade?
+              Qual seu nome e sua faculdade? Ex: "João - Insper"
             </h2>
             <input 
               type="text"
