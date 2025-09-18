@@ -67,12 +67,14 @@ export default function RedBullQuiz() {
     }
   };
 
-  useEffect(() => {
+  const [contador, setContador] = useState(20); // novo estado
+
+useEffect(() => {
   if (step === "resultado") {
     setFadeInResultado(false);
+    setContador(20); 
     const timeout = setTimeout(() => setFadeInResultado(true), 50);
 
-    // envia respostas
     const enviarRespostas = async () => {
       try {
         await fetch("https://redbull-quiz.onrender.com/respostas", {
@@ -86,21 +88,28 @@ export default function RedBullQuiz() {
     };
     enviarRespostas();
 
+    const interval = setInterval(() => {
+      setContador((prev) => prev - 1);
+    }, 1000);
+
+    // timer para resetar
     const resetTimer = setTimeout(() => {
       setStep("inicio");
       setIndice(0);
       setRespostas([]);
       setFaculdade("");
-    }, 20000); // 20 segundos
+    }, 20000);
 
     return () => {
       clearTimeout(timeout);
       clearTimeout(resetTimer);
+      clearInterval(interval);
     };
   } else {
     setFadeInResultado(false);
   }
   }, [step, faculdade, respostas]);
+
 
 
 
