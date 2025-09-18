@@ -72,7 +72,7 @@ export default function RedBullQuiz() {
     setFadeInResultado(false);
     const timeout = setTimeout(() => setFadeInResultado(true), 50);
 
-    // função assíncrona só pra mandar as respostas
+    // envia respostas
     const enviarRespostas = async () => {
       try {
         await fetch("https://redbull-quiz.onrender.com/respostas", {
@@ -84,14 +84,24 @@ export default function RedBullQuiz() {
         console.error("Erro ao enviar respostas:", err);
       }
     };
-
     enviarRespostas();
 
-    return () => clearTimeout(timeout);
+    const resetTimer = setTimeout(() => {
+      setStep("inicio");
+      setIndice(0);
+      setRespostas([]);
+      setFaculdade("");
+    }, 20000); // 20 segundos
+
+    return () => {
+      clearTimeout(timeout);
+      clearTimeout(resetTimer);
+    };
   } else {
     setFadeInResultado(false);
   }
   }, [step, faculdade, respostas]);
+
 
 
   return (
