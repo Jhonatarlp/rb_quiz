@@ -1,66 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-const perguntas = [
-  { 
-    id: 1,
-    pergunta: "1. Qual seu gênero?", 
-    opcoes: ["Masculino", "Feminino", "Prefiro não responder", "Outro"] 
-  },
-  { 
-    id: 2,
-    pergunta: "2. Como você se sente hoje?", 
-    opcoes: ["Cansado(a)", "Calmo(a)", "Motivado(a)", "Disposto(a)", "Animado(a)"] 
-  },
-  { 
-    id: 3,
-    pergunta: "3. Qual momento do dia você mais sente que precisa de energia extra?", 
-    opcoes: [
-      "De manhã cedo, para começar as aulas",
-      "No intervalo ou depois do almoço (quando bate a preguiça)",
-      "Antes ou depois do treino/academia",
-      "À noite, para estudar ou entregar trabalhos",
-      "Durante festas, rolês ou encontros com amigos",
-      "No estágio ou no trabalho"
-    ] 
-  },
-  { 
-    id: 4,
-    pergunta: "4. Em quais situações você mais consome algo para dar energia?", 
-    opcoes: [
-      "Antes das provas ou trabalhos importantes",
-      "Durante os treinos",
-      "Para aguentar a madrugada estudando",
-      "Antes de sair para festas",
-      "No dia a dia, para manter o ritmo"
-    ] 
-  },
-  { 
-    id: 5,
-    pergunta: "5. Com que frequência você pratica atividades físicas?", 
-    opcoes: ["Diariamente", "Algumas vezes por semana", "Raramente", "Nunca"] 
-  },
-  { 
-    id: 6,
-    pergunta: "6. Você diria que se preocupa em equilibrar energia e saúde?", 
-    opcoes: [
-      "Sim, sempre busco opções mais saudáveis",
-      "Sim, mas às vezes abro exceções",
-      "Nem tanto, priorizo o sabor e praticidade",
-      "Depende muito da rotina do dia"
-    ] 
-  },
-  { 
-    id: 7,
-    pergunta: "7. Qual cenário mais combina com você agora?", 
-    opcoes: [
-      "Cheguei da aula e estou cansado(a)",
-      "Vou treinar depois da faculdade",
-      "Estou estudando para a próxima prova",
-      "Me preparando para sair com os amigos",
-      "Trabalhando/estagiando e preciso de foco"
-    ] 
-  },
-];
 
 const PRIMARY = "#d6001c"; 
 const TEXT_COLOR = "#1c1c1c";
@@ -78,6 +17,14 @@ export default function RedBullQuiz() {
   const [showPopup, setShowPopup] = useState(false);
 
   const isMobile = windowWidth <= 430;
+
+  const [perguntas, setPerguntas] = useState([]);
+
+  useEffect(() => {
+  fetch("https://redbull-quiz.onrender.com/perguntas")
+    .then(res => res.json())
+    .then(data => setPerguntas(data));
+  }, []);
 
   const iniciar = () => {
     setStep("faculdade");
@@ -121,20 +68,31 @@ export default function RedBullQuiz() {
   };
 
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  if (step === "resultado") {
+    setFadeInResultado(false);
+    const timeout = setTimeout(() => setFadeInResultado(true), 50);
 
-  useEffect(() => {
-    if (step === "resultado") {
-      setFadeInResultado(false);
-      const timeout = setTimeout(() => setFadeInResultado(true), 50);
-      return () => clearTimeout(timeout);
-    } else {
-      setFadeInResultado(false);
-    }
-  }, [step]);
+    // função assíncrona só pra mandar as respostas
+    const enviarRespostas = async () => {
+      try {
+        await fetch("https://redbull-quiz.onrender.com/respostas", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ faculdade, respostas })
+        });
+      } catch (err) {
+        console.error("Erro ao enviar respostas:", err);
+      }
+    };
+
+    enviarRespostas();
+
+    return () => clearTimeout(timeout);
+  } else {
+    setFadeInResultado(false);
+  }
+  }, [step, faculdade, respostas]);
+
 
   return (
     <div

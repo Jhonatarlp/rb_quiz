@@ -13,7 +13,7 @@ const auth = new google.auth.GoogleAuth({
 });
 
 const sheets = google.sheets({ version: "v4", auth });
-const spreadsheetId = "https://docs.google.com/spreadsheets/d/16xPV8Lp2I1-qP4e7NbA87NIPlMDHCczoli_qV9wHD84/edit?usp=sharing"; // pega da URL do Google Sheets
+const spreadsheetId = "16xPV8Lp2I1-qP4e7NbA87NIPlMDHCczoli_qV9wHD84";
 
 // rota GET para buscar perguntas
 app.get("/perguntas", async (req, res) => {
