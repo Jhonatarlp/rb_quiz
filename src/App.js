@@ -116,8 +116,8 @@ useEffect(() => {
   return (
     <div
       style={{
-        minHeight: "100vh",
-        width: "100vw",
+        minHeight: "200vh",
+        width: "100px",
         backgroundColor: "#f5f5f5",
         display: "flex",
         justifyContent: "center",
